@@ -2,40 +2,50 @@
 import { gql } from "@apollo/client";
 import client from "../../lib/apollo-client";
 
-export default async function handler(req, res) {
+export default function handler(req, res) {
   if (req.method === 'POST') {
-    try {
-      const { username } = req.body
-      const { data } = await client.query({
-        query: gql`
-        query {
-          user(login: "${username}") {
-            name
-            bio
-            company
-            repositories(last: 5) {
-              totalCount
-              nodes {
-                name
-                url
-              }
+    const { username } = req.body
+    client.query({
+      query: gql`
+      query {
+        user(login: "${username}") {
+          name,
+          bio,
+          company,
+          location,
+          websiteUrl,
+          avatarUrl,
+          repositories(last: 8){
+            totalCount,
+            nodes{
+              name,
+              url
             }
-            followers(last: 5) {
-              totalCount
-            }
-            following(last: 5) {
-              totalCount
-            }
+          },
+          followers(last: 5){
+            totalCount
+          },
+          following(last: 5){
+            totalCount
+          },
+          gists(last: 5){
+            totalCount
           }
+        },
+        rateLimit {
+          limit
+          cost
+          remaining
+          resetAt
         }
-      `,
-      });
-
-      res.json({ success: true, ...data });
-    } catch (error) {
-      console.log(error)
-      res.json({ success: false, error: error.message });
-    }
-
+      }
+    `,
+    }).then((response) => {
+      // console.log(response)
+      return res.json({ success: true, ...response.data });
+    }).catch((err) => {
+      // console.log(err)
+      return res.json({ success: false, error: err });
+    })
   }
 }
