@@ -10,6 +10,7 @@ import UserCard from "../components/UserCard";
 import PublicRepos from "../components/PublicRepos";
 
 export default function Home() {
+  // console.log(idata);
   const [username, setUsername] = useState("ssahibsingh");
   const [data, setData] = useState({});
   const [error, setError] = useState(null);
@@ -33,7 +34,7 @@ export default function Home() {
   const handleSubmit = (values, onSubmitProps) => {
     onSubmitProps.setSubmitting(true);
     axios
-      .post("/api/getData", { username: values.ghusername })
+      .get("/api/getData", {params: { username: values.ghusername }})
       .then((res) => {
         if (res.data.success) {
           setData(res.data.user);
@@ -131,3 +132,13 @@ export default function Home() {
     </>
   );
 }
+
+
+// export async function getServerSideProps() {
+//   // Fetch data from external API
+//   const res = await fetch(`https://user-insights.vercel.app/api/getData`)
+//   const data = await res.json()
+
+//   // Pass data to the page via props
+//   return { props: { idata: data } }
+// }
