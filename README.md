@@ -1,34 +1,94 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
+# Github User Insights
 
-First, run the development server:
+A Next.js app for Github Insights of an User.
 
-```bash
-npm run dev
-# or
-yarn dev
+
+## Features
+
+Get following Insights for any github user: 
+
+- Public Repos
+- Followers
+- Following
+- Gists
+- Profile
+## Screenshots
+
+![App Screenshot](https://user-insights.vercel.app/preview.webp)
+
+
+## Demo
+
+https://user-insights.vercel.app/
+
+
+
+## Tech Stack
+
+- [Next.js](https://nextjs.org/)
+- [Github Graphql API](https://docs.github.com/en/graphql)
+- [ApolloClient](https://www.apollographql.com/)
+- [Bootstrap](https://getbootstrap.com/docs/5.3/getting-started/introduction/)
+
+
+
+
+## API Reference
+
+#### GET User data
+
+```http
+  GET /api/getData
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+| Query | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `username` | `string` | **Required**. Github username for fetching data |
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+## Run Locally
 
-## Learn More
+Clone the project
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+  git clone https://github.com/ssahibsingh/github-user-insights
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Go to the project directory
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+```bash
+  cd github-user-insights
+```
 
-## Deploy on Vercel
+Install dependencies
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```bash
+  npm install
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Start the server
+
+```bash
+  npm dev
+```
+
+
+## Environment Variables
+
+To run this project, you will need to add the following environment variables to your .env file
+
+`GITHUB_TOKEN`
+
+Create your own Github token from [here](https://github.com/settings/tokens)
+
+
+## Contributing
+
+Contributions are always welcome! Just raise an issue, we will discuss it.
+
+
+## Feedback
+
+If you have any feedback, please reach out to me [here](https://ssahibsingh.github.io/#contact)
