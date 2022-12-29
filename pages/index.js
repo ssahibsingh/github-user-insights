@@ -1,13 +1,11 @@
 import Head from "next/head";
-import { Inter } from "@next/font/google";
 import { GoGist, GoRepo } from "react-icons/go";
 import { FiUserPlus, FiUsers } from "react-icons/fi";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { Field, Form, Formik } from "formik";
-const inter = Inter({ subsets: ["latin"] });
 import Navbar from "../components/Navbar";
-import Cards from "../components/cards";
+import Cards from "../components/Cards";
 import UserCard from "../components/UserCard";
 import PublicRepos from "../components/PublicRepos";
 
