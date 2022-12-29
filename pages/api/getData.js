@@ -3,8 +3,8 @@ import { gql } from "@apollo/client";
 import client from "../../lib/apollo-client";
 
 export default function handler(req, res) {
-  if (req.method === 'POST') {
-    const { username } = req.body
+  if (req.method === 'GET') {
+    const { username } = req.query
     client.query({
       query: gql`
       query {
